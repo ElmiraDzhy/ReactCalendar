@@ -7,7 +7,6 @@ function CalendarDay(props) {
 	return (
 		<CalendarContext.Consumer>
       { ( value ) => {
-        console.log(getDate(value))
 				return <div className={styles.day}>
 					<h1 className={styles.title}>{format(value, 'EEEE')}</h1>
 					<p className={styles["day-of-week"]}> {getDate(value)} </p>

@@ -1,16 +1,20 @@
-import React from 'react'
-import Month from './Month'
-import styles from './CalendarBody.module.css';
+import React from "react";
+import Month from "./Month";
+import styles from "./CalendarBody.module.css";
 
 function CalendarBody(props) {
-  return (
-    <div className={styles.container}>
-      <h1>Month YYYY</h1>
+	return (
+		<div className={styles.container}>
+			<div>
+				{/* <button>{"<"}</button> */}
+				<h1>Month YYYY</h1>
+				{/* <button>{">"}</button> */}
+			</div>
 
-      <Month/>
-      
-    </div>
-  )
+			<Month />
+		</div>
+	);
 }
 
-export default CalendarBody
+export default CalendarBody;
+

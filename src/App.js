@@ -1,5 +1,7 @@
+import Calendar from "./components/Calendar";
+
 function App() {
-  return null;
+  return <Calendar/>;
 }
 
 export default App;

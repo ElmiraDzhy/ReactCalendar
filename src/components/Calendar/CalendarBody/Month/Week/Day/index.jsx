@@ -1,10 +1,10 @@
 import React from 'react'
 
-function Day() {
+function Day( props ) {
   return (
-    <div>
-      
-    </div>
+    <td>
+     {props.number }
+    </td>
   )
 }
 
