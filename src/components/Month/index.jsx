@@ -2,6 +2,7 @@ import React from "react";
 import Week from "../Week";
 import { CalendarContext } from "../../contexts/CalendarContext";
 import { getWeeksInMonth, startOfMonth, startOfWeek, addDays } from "date-fns";
+import styles from './Month.module.css';
 
 function Month(props) {
 	return (
@@ -10,16 +11,16 @@ function Month(props) {
 				const weeksInMonth = getWeeksInMonth(value);
 
 				return (
-					<table>
+					<table className={styles.month}>
 						<thead>
 							<tr>
-								<th> s </th>
-								<th> m </th>
-								<th> t </th>
-								<th> w </th>
-								<th> t </th>
-								<th> f </th>
-								<th> s</th>
+								<th className={styles.dayOfWeek}> s </th>
+								<th className={styles.dayOfWeek}> m </th>
+								<th className={styles.dayOfWeek}> t </th>
+								<th className={styles.dayOfWeek}> w </th>
+								<th className={styles.dayOfWeek}> t </th>
+								<th className={styles.dayOfWeek}> f </th>
+								<th className={styles.dayOfWeek}> s</th>
 							</tr>
 						</thead>
 						<tbody>{renderWeeks(weeksInMonth, value)}</tbody>

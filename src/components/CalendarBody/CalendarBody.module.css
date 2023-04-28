@@ -7,3 +7,8 @@
   text-align: center;
 
 }
+
+.title{
+  text-transform: uppercase;
+  color: darkcyan;
+}

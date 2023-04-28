@@ -3,6 +3,7 @@ import Day from "../Day";
 import {  isThisMonth,  getDate, addDays } from "date-fns";
 import { CalendarContext } from "../../contexts/CalendarContext";
 
+
 function Week(props) {
 	const { startOfCurrentWeek } = props;
 
@@ -25,14 +26,16 @@ function renderDays( start ) {
 			days.push(
 				<Day
 					key={i}
-          number={ getDate(start)}
+          number={ getDate( start ) }
+          isCurrentMonth
 				/>
 			);
 		} else {
 			days.push(
 				<Day
 					key={i}
-					number={null}
+          number={ null }
+          isCurrentMonth={false}
 				/>
 			);
     }
