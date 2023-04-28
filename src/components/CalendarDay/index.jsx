@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./CalendarDay.module.css";
-import { CalendarContext } from "../../../contexts/CalendarContext";
+import { CalendarContext } from "../../contexts/CalendarContext";
 import {getDate, format} from 'date-fns'
 
 function CalendarDay(props) {

@@ -1,8 +1,8 @@
 import React from "react";
-import CalendarDay from "./CalendarDay";
-import CalendarBody from "./CalendarBody";
+import CalendarDay from "../CalendarDay";
+import CalendarBody from "../CalendarBody";
 import styles from "./Calendar.module.css";
-import {CalendarContext} from "./../../contexts/CalendarContext";
+import { CalendarContext } from "../../contexts/CalendarContext";
 
 class Calendar extends React.Component {
 	constructor(props) {

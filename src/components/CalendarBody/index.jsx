@@ -1,5 +1,5 @@
 import React from "react";
-import Month from "./Month";
+import Month from "../Month";
 import styles from "./CalendarBody.module.css";
 
 function CalendarBody(props) {

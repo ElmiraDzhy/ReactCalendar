@@ -1,6 +1,6 @@
 import React from "react";
-import Week from "./Week";
-import { CalendarContext } from "../../../../contexts/CalendarContext";
+import Week from "../Week";
+import { CalendarContext } from "../../contexts/CalendarContext";
 import { getWeeksInMonth, getDaysInMonth, getDay, startOfMonth } from "date-fns";
 
 function Month(props) {
@@ -41,7 +41,7 @@ function renderWeeks(amountOfWeeks, daysInMonth, date) {
       weeks.push(
         <Week
           key={i}
-          numberOfWeek={i}
+          weekNumber={i}
           daysInMonth={daysInMonth.splice(0, daysInFirstWeek)}
         />
       );
@@ -49,7 +49,7 @@ function renderWeeks(amountOfWeeks, daysInMonth, date) {
       weeks.push(
         <Week
           key={i}
-          numberOfWeek={i}
+          weekNumber={i}
           daysInMonth={daysInMonth.splice(0, 7)}
         />
       );
