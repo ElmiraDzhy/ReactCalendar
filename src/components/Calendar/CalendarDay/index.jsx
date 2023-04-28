@@ -1,13 +1,21 @@
-import React from 'react';
-import styles from './CalendarDay.module.css';
+import React from "react";
+import styles from "./CalendarDay.module.css";
+import { CalendarContext } from "../../../contexts/CalendarContext";
+import {getDate, format} from 'date-fns'
 
 function CalendarDay(props) {
-  return (
-    <div className={styles.day}>
-      <h1 className={styles.title}>Day of Week</h1>
-      <p className={styles['day-of-week']}>31</p>
-    </div>
-  )
+	return (
+		<CalendarContext.Consumer>
+      { ( value ) => {
+        console.log(getDate(value))
+				return <div className={styles.day}>
+					<h1 className={styles.title}>{format(value, 'EEEE')}</h1>
+					<p className={styles["day-of-week"]}> {getDate(value)} </p>
+				</div>;
+			}}
+		</CalendarContext.Consumer>
+	);
 }
 
 export default CalendarDay;
+
