@@ -1,6 +1,6 @@
 import React from "react";
 import Day from "../Day";
-import {  isThisMonth,  getDate, addDays } from "date-fns";
+import {  isThisMonth, addDays } from "date-fns";
 import { CalendarContext } from "../../contexts/CalendarContext";
 
 
@@ -26,7 +26,7 @@ function renderDays( start ) {
 			days.push(
 				<Day
 					key={i}
-          number={ getDate( start ) }
+          number={  start  }
           isCurrentMonth
 				/>
 			);
@@ -34,7 +34,7 @@ function renderDays( start ) {
 			days.push(
 				<Day
 					key={i}
-          number={ null }
+          number={  start  }
           isCurrentMonth={false}
 				/>
 			);
