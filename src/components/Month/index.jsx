@@ -1,7 +1,7 @@
 import React from "react";
 import Week from "../Week";
 import { CalendarContext } from "../../contexts/CalendarContext";
-import { getWeeksInMonth, getDaysInMonth, getDay, startOfMonth } from "date-fns";
+import { getWeeksInMonth, startOfMonth, startOfWeek, addDays } from "date-fns";
 
 function Month(props) {
 	return (
@@ -9,9 +9,6 @@ function Month(props) {
 			{(value) => {
 				const weeksInMonth = getWeeksInMonth(value);
 
-        const daysInMonth = Array.from( Array( getDaysInMonth( value ) + 1 ).keys() );
-        daysInMonth.shift();
-        
 				return (
 					<table>
 						<thead>
@@ -25,7 +22,7 @@ function Month(props) {
 								<th> s</th>
 							</tr>
 						</thead>
-						<tbody>{renderWeeks(weeksInMonth, daysInMonth, value)}</tbody>
+						<tbody>{renderWeeks(weeksInMonth, value)}</tbody>
 					</table>
 				);
 			}}
@@ -33,30 +30,23 @@ function Month(props) {
 	);
 }
 
-function renderWeeks(amountOfWeeks, daysInMonth, date) {
-  const weeks = [];
-  const daysInFirstWeek = 7 - getDay( startOfMonth( date ) );
-  for ( let i = 0; i < amountOfWeeks; i++ ) {
-    if ( i === 0 ) {
-      weeks.push(
-        <Week
-          key={i}
-          weekNumber={i}
-          daysInMonth={daysInMonth.splice(0, daysInFirstWeek)}
-        />
-      );
-    } else {
-      weeks.push(
-        <Week
-          key={i}
-          weekNumber={i}
-          daysInMonth={daysInMonth.splice(0, 7)}
-        />
-      );
-    }
+function renderWeeks(amountOfWeeks, date) {
+	const weeks = [];
 
-		
+	let dateToCalculate = startOfMonth(date);
+
+	for (let i = 0; i < amountOfWeeks; i++) {
+		let startOfCurrentWeek = startOfWeek(dateToCalculate);
+
+		weeks.push(
+			<Week
+				key={i}
+				startOfCurrentWeek={startOfCurrentWeek}
+			/>
+		);
+		dateToCalculate = addDays(dateToCalculate, 7);
 	}
+
 	return weeks;
 }
 

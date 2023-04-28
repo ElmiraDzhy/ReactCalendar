@@ -1,45 +1,45 @@
 import React from "react";
 import Day from "../Day";
-import { getDay, startOfMonth } from "date-fns";
+import {  isThisMonth,  getDate, addDays } from "date-fns";
 import { CalendarContext } from "../../contexts/CalendarContext";
 
 function Week(props) {
-  const { weekNumber, daysInMonth } = props;
-  
+	const { startOfCurrentWeek } = props;
+
 	return (
 		<CalendarContext.Consumer>
-      { ( value ) => {
-        const startOfFirstWeek = getDay(startOfMonth( value ));
-
-				return <tr>{renderDays(weekNumber, startOfFirstWeek, daysInMonth)}</tr>;
+			{(value) => {
+				return <tr>{renderDays(startOfCurrentWeek)}</tr>;
 			}}
-
 		</CalendarContext.Consumer>
 	);
 }
 
 export default Week;
 
+function renderDays( start ) {
+	const days = [];
 
-function renderDays( weekNumber, startOfFirstWeek , daysInMonth) {
-  const days = [];
+	for (let i = 0; i < 7; i++) {
+		if (isThisMonth(start)) {
+			days.push(
+				<Day
+					key={i}
+          number={ getDate(start)}
+				/>
+			);
+		} else {
+			days.push(
+				<Day
+					key={i}
+					number={null}
+				/>
+			);
+    }
+    start = addDays( start, 1 );
+	}
 
-  if ( weekNumber === 0 ) {
-    for ( let i = 0; i < 7; i++ ){
-      if ( i === startOfFirstWeek ) {
-        days.push( <Day key={ i } number={ daysInMonth.shift()} />)
-      }
-      else {
-        days.push( <Day key={ i } number={null} />)
-        
-      }
-    }
-  } else {
-    for (let i = 0; i < 7; i++) {
-      days.push( <Day key={ i } number={ (daysInMonth.shift())}/>)
-      
-    }
-  }
-  return days;
+	return days;
 }
+
 

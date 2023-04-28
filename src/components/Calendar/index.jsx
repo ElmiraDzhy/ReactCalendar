@@ -12,8 +12,8 @@ class Calendar extends React.Component {
 		};
 	}
 
-  render() {
-    const { date } = this.state;
+	render() {
+		const { date } = this.state;
 		return (
 			<CalendarContext.Provider value={date}>
 				<article className={styles.container}>
