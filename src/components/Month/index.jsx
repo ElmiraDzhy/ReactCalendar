@@ -7,8 +7,8 @@ import styles from './Month.module.css';
 function Month(props) {
 	return (
 		<CalendarContext.Consumer>
-			{(value) => {
-				const weeksInMonth = getWeeksInMonth(value);
+			{([date]) => {
+				const weeksInMonth = getWeeksInMonth(date);
 
 				return (
 					<table className={styles.month}>
@@ -23,7 +23,7 @@ function Month(props) {
 								<th className={styles.dayOfWeek}> s</th>
 							</tr>
 						</thead>
-						<tbody>{renderWeeks(weeksInMonth, value)}</tbody>
+						<tbody>{renderWeeks(weeksInMonth, date)}</tbody>
 					</table>
 				);
 			}}
@@ -33,6 +33,7 @@ function Month(props) {
 
 function renderWeeks(amountOfWeeks, date) {
 	const weeks = [];
+
 
 	let dateToCalculate = startOfMonth(date);
 

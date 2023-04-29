@@ -6,10 +6,10 @@ import {getDate, format} from 'date-fns'
 function CalendarDay(props) {
 	return (
 		<CalendarContext.Consumer>
-      { ( value ) => {
+      { ( [date] ) => {
 				return <div className={styles.day}>
-					<h1 className={styles.title}>{format(value, 'EEEE')}</h1>
-					<p className={styles["day-of-week"]}> {getDate(value)} </p>
+					<h1 className={styles.title}>{format(date, 'EEEE')}</h1>
+					<p className={styles["day-of-week"]}> {getDate(date)} </p>
 				</div>;
 			}}
 		</CalendarContext.Consumer>

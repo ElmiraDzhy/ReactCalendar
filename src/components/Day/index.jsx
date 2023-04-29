@@ -9,14 +9,20 @@ function Day(props) {
 
 	return (
 		<CalendarContext.Consumer>
-			{(value) => {
+			{([date, changeCurrentDay]) => {
 				const className = classNames(styles.day, {
-					[styles.currentDay]: isSameDay(value, number),
+					[styles.currentDay]: isSameDay(date, number),
 					[styles.isCurrent]: isCurrentMonth,
 					[styles.isAnother]: !isCurrentMonth,
 				});
 
-				return <td className={className}>{getDate(number)}</td>;
+				return (
+					<td
+						onClick={() => {changeCurrentDay(number)}}
+						className={className}>
+						{getDate(number)}
+					</td>
+				);
 			}}
 		</CalendarContext.Consumer>
 	);

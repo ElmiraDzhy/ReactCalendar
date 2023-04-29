@@ -1,48 +1,37 @@
 import React from "react";
 import Day from "../Day";
-import {  isThisMonth, addDays } from "date-fns";
-import { CalendarContext } from "../../contexts/CalendarContext";
-
+import { isThisMonth, addDays } from "date-fns";
 
 function Week(props) {
 	const { startOfCurrentWeek } = props;
-
-	return (
-		<CalendarContext.Consumer>
-			{(value) => {
-				return <tr>{renderDays(startOfCurrentWeek)}</tr>;
-			}}
-		</CalendarContext.Consumer>
-	);
+	return <tr>{renderDays(startOfCurrentWeek)}</tr>;
 }
 
 export default Week;
 
-function renderDays( start ) {
+function renderDays(start) {
 	const days = [];
-
 	for (let i = 0; i < 7; i++) {
 		if (isThisMonth(start)) {
 			days.push(
 				<Day
 					key={i}
-          number={  start  }
-          isCurrentMonth
+					number={start}
+					isCurrentMonth
 				/>
 			);
 		} else {
 			days.push(
 				<Day
 					key={i}
-          number={  start  }
-          isCurrentMonth={false}
+					number={start}
+					isCurrentMonth={false}
 				/>
 			);
-    }
-    start = addDays( start, 1 );
+		}
+		start = addDays(start, 1);
 	}
 
 	return days;
 }
-
 

@@ -7,9 +7,9 @@ import { format } from "date-fns";
 function CalendarBody(props) {
 	return (
 		<CalendarContext.Consumer>
-			{(value) => {
-				const month = format(value, "MMMM");
-				const year = format(value, "yyyy");
+			{([date, changeCurrentDay]) => {
+				const month = format(date, "MMMM");
+				const year = format(date, "yyyy");
 				return (
 					<div className={styles.container}>
 						<div>
