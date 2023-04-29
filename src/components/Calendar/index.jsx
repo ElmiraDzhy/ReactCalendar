@@ -12,10 +12,16 @@ class Calendar extends React.Component {
 		};
 	}
 
+	changeCurrentDay = (newDate) => {
+		this.setState({
+			date: newDate,
+		});
+	};
+
 	render() {
 		const { date } = this.state;
 		return (
-			<CalendarContext.Provider value={date}>
+			<CalendarContext.Provider value={[date, this.changeCurrentDay]}>
 				<article className={styles.container}>
 					<CalendarDay />
 					<CalendarBody />
