@@ -1,14 +1,36 @@
-.container{
-  padding: 30px 0px;
-  display: flex;
-  flex-direction: column;
-  width: 375px;
+.container {
+	padding: 30px 0px;
+	display: flex;
+	flex-direction: column;
+	width: 375px;
 
-  text-align: center;
-
+	text-align: center;
 }
 
-.title{
-  text-transform: uppercase;
-  color: darkcyan;
+.title {
+	text-transform: uppercase;
+	color: darkcyan;
+}
+
+.wrapper {
+	width: 100%;
+	display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.arrow{
+  margin:  0 20px;
+
+  border: none;
+  background: transparent;
+  font-size: 25px;
+  color: grey;
+}
+
+
+.arrow:hover{
+cursor: pointer;
+color: rgb(88, 88, 88);
+
 }

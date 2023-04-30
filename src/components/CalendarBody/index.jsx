@@ -2,7 +2,7 @@ import React from "react";
 import Month from "../Month";
 import styles from "./CalendarBody.module.css";
 import { CalendarContext } from "../../contexts/CalendarContext";
-import { format } from "date-fns";
+import { addMonths, format, subMonths } from "date-fns";
 
 function CalendarBody(props) {
 	return (
@@ -12,12 +12,26 @@ function CalendarBody(props) {
 				const year = format(date, "yyyy");
 				return (
 					<div className={styles.container}>
-						<div>
-							{/* <button>{"<"}</button> */}
+						<div className={styles.wrapper}>
+							<button
+								onClick={() => {
+									const newDate = subMonths(date, 1);
+									changeCurrentDay(newDate);
+								}}
+								className={styles.arrow}>
+								{"<"}
+							</button>
 							<h1 className={styles.title}>
 								{month} {year}
 							</h1>
-							{/* <button>{">"}</button> */}
+							<button
+								onClick={() => {
+									const newDate = addMonths(date, 1);
+									changeCurrentDay(newDate);
+								}}
+								className={styles.arrow}>
+								{">"}
+							</button>
 						</div>
 
 						<Month />
