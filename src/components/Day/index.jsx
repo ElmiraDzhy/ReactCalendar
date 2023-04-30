@@ -8,7 +8,7 @@ function Day(props) {
 	const { number } = props;
 	return (
 		<CalendarContext.Consumer>
-			{([date, changeCurrentDay]) => {
+			{([date, changeCurrentDate]) => {
 				const isCurrentMonth = getMonth(date) === getMonth(number) && getYear(date) === getYear(number);
 
 				const className = classNames(styles.day, {
@@ -20,7 +20,7 @@ function Day(props) {
 				return (
 					<td
 						onClick={() => {
-							changeCurrentDay(number);
+							changeCurrentDate(number);
 						}}
 						className={className}>
 						{getDate(number)}

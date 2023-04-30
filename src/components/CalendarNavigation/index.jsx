@@ -6,7 +6,7 @@ import { CalendarContext } from "../../contexts/CalendarContext";
 function CalendarNavigation(props) {
 	return (
 		<CalendarContext.Consumer>
-			{([date, changeCurrentDay]) => {
+			{([date, changeCurrentDate]) => {
 				const month = format(date, "MMMM");
 				const year = format(date, "yyyy");
 				return (
@@ -18,7 +18,7 @@ function CalendarNavigation(props) {
 									newDate = new Date();
 								}
 
-								changeCurrentDay(newDate);
+								changeCurrentDate(newDate);
 							}}
 							className={styles.arrow}>
 							{"<"}
@@ -32,7 +32,7 @@ function CalendarNavigation(props) {
 								if (isThisMonth(newDate)) {
 									newDate = new Date();
 								}
-								changeCurrentDay(newDate);
+								changeCurrentDate(newDate);
 							}}
 							className={styles.arrow}>
 							{">"}

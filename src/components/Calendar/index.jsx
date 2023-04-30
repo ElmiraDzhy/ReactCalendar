@@ -12,7 +12,7 @@ class Calendar extends React.Component {
 		};
 	}
 
-	changeCurrentDay = (newDate) => {
+	changeCurrentDate = (newDate) => {
 		this.setState({
 			date: newDate,
 		});
@@ -21,7 +21,7 @@ class Calendar extends React.Component {
 	render() {
 		const { date } = this.state;
 		return (
-			<CalendarContext.Provider value={[date, this.changeCurrentDay]}>
+			<CalendarContext.Provider value={[date, this.changeCurrentDate]}>
 				<article className={styles.container}>
 					<CalendarDay />
 					<CalendarBody />
