@@ -2,14 +2,15 @@ import React from "react";
 import styles from "./Day.module.css";
 import classNames from "classnames";
 import { CalendarContext } from "../../contexts/CalendarContext";
-import { isSameDay, getDate } from "date-fns";
+import { isSameDay, getDate, getMonth, getYear } from "date-fns";
 
 function Day(props) {
-	const { isCurrentMonth, number } = props;
-
+	const { number } = props;
 	return (
 		<CalendarContext.Consumer>
 			{([date, changeCurrentDay]) => {
+				const isCurrentMonth = getMonth(date) === getMonth(number) && getYear(date) === getYear(number);
+
 				const className = classNames(styles.day, {
 					[styles.currentDay]: isSameDay(date, number),
 					[styles.isCurrent]: isCurrentMonth,
@@ -18,7 +19,9 @@ function Day(props) {
 
 				return (
 					<td
-						onClick={() => {changeCurrentDay(number)}}
+						onClick={() => {
+							changeCurrentDay(number);
+						}}
 						className={className}>
 						{getDate(number)}
 					</td>

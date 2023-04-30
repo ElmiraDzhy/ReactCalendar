@@ -25,7 +25,6 @@ function renderDays(start) {
 				<Day
 					key={i}
 					number={start}
-					isCurrentMonth={false}
 				/>
 			);
 		}
